@@ -1,0 +1,82 @@
+{
+  "name": "vanilla-wc-hnpwa",
+  "version": "1.0.0",
+  "description": "A Hacker News PWA clone built with vanilla JS and Web Components",
+  "main": "./app/index.js",
+  "author": "Alex Nozdriukhin <alex.nozzzz@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "yarn build && echo 'User-agent: *\nDisallow:' > ./build/robots.txt && firebase deploy --only hosting",
+    "build": "yarn run build:legacy && yarn run build:modern && rsync -rq ./public ./build",
+    "build:modern": "cross-env NODE_ENV=production BUNDLE=modern yarn run bundle",
+    "build:legacy": "cross-env NODE_ENV=production yarn run bundle",
+    "bundle": "webpack --config ./config/webpack.config --progress",
+    "bundle:debug": "node --inspect-brk ./node_modules/.bin/webpack-cli --runInBand --watch",
+    "start": "nodemon --watch ./config/webpack.config --exec \"webpack-dev-server --open --hot --config ./config/webpack.config\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexnoz/vanilla-wc-hnpwa.git"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0-beta.53",
+    "@babel/core": "7.0.0-beta.53",
+    "@babel/plugin-syntax-dynamic-import": "7.0.0-beta.53",
+    "@babel/plugin-transform-runtime": "7.0.0-beta.53",
+    "@babel/preset-env": "7.0.0-beta.53",
+    "autoprefixer": "^8.6.5",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^8.0.0-beta",
+    "babel-plugin-transform-custom-element-classes": "0.1.0",
+    "chalk": "2.4.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "5.2.0",
+    "css-loader": "^1.0.0",
+    "cssnano": "^4.0.2",
+    "eslint": "^5.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-compat": "^2.5.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "express": "4.16.3",
+    "fast-sass-loader": "^1.4.5",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "fs-extra": "6.0.1",
+    "glob": "^7.1.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "ignore-emit-webpack-plugin": "1.0.2",
+    "mini-css-extract-plugin": "0.4.1",
+    "node-sass": "4.9.2",
+    "nodemon": "^1.18.2",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "postcss-loader": "^2.1.6",
+    "preload-webpack-plugin": "3.0.0-beta.1",
+    "pug-html-loader": "^1.1.5",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "style-loader": "^0.21.0",
+    "sw-precache-webpack-plugin": "0.11.5",
+    "uglifyjs-webpack-plugin": "1.2.7",
+    "webpack": "^4.16.0",
+    "webpack-cli": "3.0.8",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.3"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "engines": {
+    "node": ">=7.6"
+  },
+  "dependencies": {
+    "@babel/polyfill": "7.0.0-beta.53"
+  }
+}

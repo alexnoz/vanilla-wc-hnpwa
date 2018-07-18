@@ -1,0 +1,16 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #b30283;
+  --pad-top: 3.8em;
+  --max-width: 50em;
+}
+
+body {
+  padding-top: var(--pad-top);
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  font-size: calc(13px + 0.3vw);
+}

@@ -1,0 +1,72 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title HNPWA
+    meta(name='description' content='Vanilla hackernews PWA built with Web Components')
+    meta(name='mobile-web-app-capable' content='yes')
+    meta(name='apple-mobile-web-app-capable' content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style' content='default')
+    meta(name='theme-color' content='#b30283')
+    link(rel='apple-touch-icon' sizes='180x180' href='/public/icons/apple-touch-icon-180.png')
+    link(rel='shortcut icon' href='/public/icons/favicon.ico')
+    link(rel='manifest' href='/public/manifest.json')
+
+    script.
+      // This script is from here (slightly modified)
+      // https://github.com/trentmwillis/webcomponentsjs/blob/55eb1558dfd2367a9da3b5eeeb041d0b30c678b6/webcomponents-loader.js
+      window.WebComponents = window.WebComponents || {};
+      window.WebComponents.root = 'https://unpkg.com/@webcomponents/webcomponentsjs@2.0.2/bundles/';
+      !function(){"use strict";var e="webcomponents-loader.js",t=[];if((!("attachShadow"in Element.prototype&&"getRootNode"in Element.prototype)||window.ShadyDOM&&window.ShadyDOM.force)&&t.push("sd"),window.customElements&&!window.customElements.forcePolyfill||t.push("ce"),"content"in document.createElement("template")&&window.Promise&&Array.from&&document.createDocumentFragment().cloneNode()instanceof DocumentFragment||(t=["lite"]),t.length){var n,o="webcomponents-"+t.join("-")+".js";if(window.WebComponents.root)n=window.WebComponents.root+o;else n=document.querySelector('script[src*="'+e+'"]').src.replace(e,o);var c=document.createElement("script");c.src=n,"loading"===document.readyState?document.write(c.outerHTML):document.head.appendChild(c)}else{var d=function(){requestAnimationFrame(function(){window.WebComponents.ready=!0,document.dispatchEvent(new CustomEvent("WebComponentsReady",{bubbles:!0}))})};"loading"!==document.readyState?d():document.addEventListener("readystatechange",function e(){d(),document.removeEventListener("readystatechange",e)})}}();
+
+      // noop ShadyCSS for browsers with WC support
+      if (!window.ShadyCSS)
+        window.ShadyCSS = {
+          prepareTemplate: function () {},
+          styleElement: function () {}
+        }
+  body
+    nav.nav
+      a.nav__logo(href='/top')
+        svg(xmlns='http://www.w3.org/2000/svg' width='249.126' height='165.191' viewBox='0 0 249.126 165.191' overflow='visible')
+          title Web Components Logo
+          path(fill='#E44D26' d='M85.003 164.563l-47.391-129.659 130.145-34.813 23.674 135.994-49.344 29.016z')
+          path(fill='#F16529' d='M139.144 153.796l39.867-23.457-20.236-116.216-53.189 14.229z')
+          path(fill='#EFEFEF' d='M229.654 67.17l6.064 20.864-46.424 13.117s0 27.922-22.529 39.022c-22.527 11.101-40.027 1.688-40.027 1.688l-2.802-8.074 33.417-9.086 7.396-28.6-21.529-21.176-30.948 9.36-2.687-7.345s14.46-31.959 57.186-13.782c0 0 13.463 8.401 16.482 15.81l46.401-11.798zM235.718 65.603l7.397-2.131 5.951 21.306-7.742 2.348z')
+          path(fill='#BCBCBC' d='M238.324 64.662l4.791-1.19 5.951 21.306-7.742 2.348-2.028-7.134 3.09-1.209zM224.535 68.475l5.119-1.305 6.064 20.864-46.424 13.117s-.5 24.363-16.656 35.395c-16.129 11.023-34.307 10.691-45.906 5.316l-1.293-3.723s31.568 7.422 47.199-16.297c9.426-15.637 9.26-26.911 9.26-26.911l46.584-12.611-3.947-13.845zM109.579 76.927l27.249-7.908 6.38 5.893-30.942 9.36z')
+          path(fill='#EFEFEF' d='M13.516 91.714l5.47 21.024 46.586-12.477s14.294 23.98 39.336 21.983c25.049-1.996 35.254-19.034 35.254-19.034l-1.727-8.368-33.354 9.296-20.993-20.774 7.658-29.228 31.384-7.793-1.453-7.69s-28.772-20.059-56.188 17.416c0 0-7.256 14.102-6.072 22.01l-45.901 13.635zM7.508 93.474l-7.448 1.951 5.791 21.344 7.857-1.939z')
+          path(fill='#BCBCBC' d='M4.789 93.991l-4.729 1.434 5.791 21.344 7.857-1.939-1.901-7.173-3.288.545zM18.596 90.216l-5.08 1.498 5.47 21.024 46.586-12.477s12.905 20.666 32.426 21.882c19.502 1.203 34.941-8.369 42.164-18.933l-.787-3.858s-23.334 22.535-48.907 10.154c-16.098-8.611-21.716-18.395-21.716-18.395l-46.483 13.014-3.673-13.909zM121.677 38.66l-27.448 7.14-2.476 8.337 31.383-7.793z')
+      ul.nav__list
+        -
+          const links = {
+            Top: '/top',
+            New: '/new',
+            Show:  '/show',
+            Ask:  '/ask',
+            Jobs:  '/jobs'
+          }
+        each href, text in links
+          li: a.nav__list-link(href=href)= text
+      a.nav__gh-link(href='https://github.com/alexnoz/vanilla-wc-hnpwa')
+        svg(xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24')
+          title GitHub icon
+          path(d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12')
+    main
+      noscript You have javascript disabled, but this app needs it to work =(
+      router-view
+        //- Fallback content
+        .loader(style='display:none') ...loading
+    template#common-view-styles
+      style.
+        a {
+          color: black;
+        }
+        a[href^="/"]:hover {
+          color: var(--accent);
+        }
+    script.
+      //- Avoid FOUC
+      document.querySelector('main').style.opacity = 0
+      document.querySelector('.loader').style.display = ''

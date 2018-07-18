@@ -1,0 +1,13 @@
+.hn-error {
+  color: #212121;
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 5em;
+}
+
+hn-user,
+hn-list,
+hn-comments {
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
