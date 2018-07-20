@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://vanilla-wc-hnpwa.firebaseapp.com" target="_blank">
-    <img src="https://user-images.githubusercontent.com/22446806/42878900-5b29af92-8a97-11e8-920f-d103c630258d.png" width="700px">
+    <img src="https://raw.githubusercontent.com/alexnoz/hacker-news-pwas/72debb7d141a4ba32f84d965110ac62650dcbde1/site/assets/images/vanilla-wc-hn.png" width="350px">
     <br>
     Demo
   </a>
