@@ -12,7 +12,7 @@ export default class extends HTMLElement {
     this.$$ready = null
   }
 
-  async fetchData (fetcher, shouldCallSuccessCb = true) {
+  async fetchData (fetcher) {
     // fetch is in progress
     if (this.abortController) {
       this.abortController.abort()
@@ -37,7 +37,7 @@ export default class extends HTMLElement {
 
       try {
         const data = await fetcher({ signal: this.abortController.signal })
-        if (shouldCallSuccessCb) this.handleFetchSuccess(data)
+        this.handleFetchSuccess(data)
       } catch (err) {
         this.handleFetchFail(err.message)
       } finally {

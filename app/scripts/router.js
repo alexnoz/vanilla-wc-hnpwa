@@ -105,10 +105,8 @@ export default routerConfig => {
 
     if (shouldChangeView) renderView(route)
     else {
-      const params = { pagechange: true, ...route.params }
-
       // send route params to the view
-      $currentView.$$routeParams = params
+      $currentView.$$routeParams = route.params
 
       if ($routerView.fallbackExists)
         $routerView.displayFallbackUntilViewReady($currentView, false)

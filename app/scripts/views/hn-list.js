@@ -151,11 +151,11 @@ class HNList extends GenericView($template, name) {
   }
 
   // Use setter as a trigger for data fetching
-  set $$routeParams ({ page, pagechange }) {
+  set $$routeParams ({ page }) {
     this.page = page ? +page : 1
 
     if (this.isConnected)
-      this.fetchData(pageFetcher(this.type, this.page), pagechange)
+      this.fetchData(pageFetcher(this.type, this.page))
   }
 
   handleFetchSuccess (stories) {
