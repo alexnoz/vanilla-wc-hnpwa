@@ -162,11 +162,11 @@ function getProdConfig () {
   const htmlPluginOptions = {
     template: './index.pug',
     /*
-    We inline both runtime entries (legacy and modern), because:
-    * It saves an http request (Webpack runtime's hash changes with every build)
-    * Despite that we ship some extra bytes (i.e. legacy browsers
-    download (but not run) modern runtime as well (same with modern browsers)),
-    it notably improves performance metrics (Lighthouse).
+      We inline both runtime entries (legacy and modern), because:
+      * It saves an http request (Webpack runtime's hash changes with every build)
+      * Despite that we ship some extra bytes (i.e. legacy browsers
+      download (but not run) modern runtime as well (same with modern browsers)),
+      it notably improves performance metrics (Lighthouse).
     */
     inlineSource: '(runtime)|(\\.css$)'
   }

@@ -1,6 +1,6 @@
 const $template = document.createElement('template')
-$template.innerHTML = `
-<style>
+$template.innerHTML =
+`<style>
   .fallback {
     display: flex;
     place-content: center;
@@ -11,8 +11,8 @@ $template.innerHTML = `
   }
 </style>
 <div class="fallback" style="display:none"><slot></slot></div>
-<slot name="views"></slot>
-`
+<slot name="views"></slot>`
+
 ShadyCSS.prepareTemplate($template, 'router-view')
 class RouterView extends HTMLElement {
   constructor () {
