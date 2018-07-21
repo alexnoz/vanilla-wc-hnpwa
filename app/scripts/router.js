@@ -103,6 +103,8 @@ export default routerConfig => {
     const shouldChangeView = toUrl.split('/')[1] !== currentUrl.split('/')[1]
     const route = resolveUrl(toUrl)
 
+    window.scrollTo(0, 0)
+
     if (shouldChangeView) renderView(route)
     else {
       // send route params to the view
